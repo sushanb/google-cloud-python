@@ -1,0 +1,2 @@
+# .gitattributes
+*.py.j2 linguist-language=Python
