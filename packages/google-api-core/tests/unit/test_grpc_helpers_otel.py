@@ -104,13 +104,12 @@ def test_create_channel_otel_combos(
         monkeypatch.setitem(sys.modules, "opentelemetry.instrumentation.grpc", None)
 
     mock_channel = "raw_channel"
+    mock_otel_grpc.intercept_channel.side_effect = lambda ch, inc: f"wrapped_{ch}"
+
     with (
         mock.patch(
             "grpc.secure_channel", return_value=mock_channel
         ) as mock_secure_channel,
-        mock.patch(
-            "grpc.intercept_channel", side_effect=lambda ch, inc: f"wrapped_{ch}"
-        ) as mock_intercept_channel,
     ):
         with mock.patch(
             "google.api_core.grpc_helpers._create_composite_credentials",
@@ -123,13 +122,13 @@ def test_create_channel_otel_combos(
 
             if expect_otel_interceptor:
                 mock_otel_grpc.client_interceptor.assert_called_once()
-                mock_intercept_channel.assert_called_once_with(
+                mock_otel_grpc.intercept_channel.assert_called_once_with(
                     mock_channel, mock_otel_grpc.client_interceptor.return_value
                 )
                 assert channel == f"wrapped_{mock_channel}"
             else:
                 # OTel should NOT have been called
-                mock_intercept_channel.assert_not_called()
+                mock_otel_grpc.intercept_channel.assert_not_called()
                 assert channel == mock_channel
 
 
@@ -152,9 +151,6 @@ def test_create_channel_with_custom_tracer_provider(
     mock_channel = "raw_channel"
     with (
         mock.patch("grpc.secure_channel", return_value=mock_channel),
-        mock.patch(
-            "grpc.intercept_channel", side_effect=lambda ch, inc: f"wrapped_{ch}"
-        ),
     ):
         with mock.patch(
             "google.api_core.grpc_helpers._create_composite_credentials",
@@ -171,9 +167,9 @@ def test_otel_integration_with_fake_endpoint(local_grpc_server, monkeypatch):
     """Verify OpenTelemetry integration with a real local gRPC server."""
     try:
         from opentelemetry.sdk.trace import TracerProvider
-        from opentelemetry.sdk.trace.export import (
+        from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+        from opentelemetry.sdk.trace.export.in_memory_span_exporter import (
             InMemorySpanExporter,
-            SimpleSpanProcessor,
         )
     except ImportError as e:
         pytest.skip(f"opentelemetry-sdk not installed or import failed: {e}")
