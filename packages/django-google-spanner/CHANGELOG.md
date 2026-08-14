@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/django-google-spanner/#history
 
+## [5.0.1](https://github.com/googleapis/google-cloud-python/compare/django-google-spanner-v5.0.0...django-google-spanner-v5.0.1) (2026-08-14)
+
+
+### Bug Fixes
+
+* **django-spanner:** declare django dependency in setup.py ([#18044](https://github.com/googleapis/google-cloud-python/issues/18044)) ([c341469](https://github.com/googleapis/google-cloud-python/commit/c3414690dc73a84e1028c3d05d9c723b2ffc3ef6))
+
 ## [5.0.0](https://github.com/googleapis/google-cloud-python/compare/django-google-spanner-v4.0.3...django-google-spanner-v5.0.0) (2026-05-01 )
 
 ### Breaking changes

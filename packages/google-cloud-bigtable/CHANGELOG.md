@@ -4,6 +4,19 @@
 
 [1]: https://pypi.org/project/google-cloud-bigtable/#history
 
+## [2.42.0](https://github.com/googleapis/google-cloud-python/compare/google-cloud-bigtable-v2.41.0...google-cloud-bigtable-v2.42.0) (2026-08-14)
+
+
+### Features
+
+* **bigtable:** client side metrics handlers ([#16760](https://github.com/googleapis/google-cloud-python/issues/16760)) ([43b786c](https://github.com/googleapis/google-cloud-python/commit/43b786c2c5f5f42d5caa3fa596a7368be09fd3a3))
+
+
+### Bug Fixes
+
+* **bigtable:** standardize client side metrics ([#17899](https://github.com/googleapis/google-cloud-python/issues/17899)) ([a69e2cb](https://github.com/googleapis/google-cloud-python/commit/a69e2cbc939320fef18eb61daa8c248edf325c5b))
+* bump grpcio to 1.59.0; require Python 3.10+ ([#17351](https://github.com/googleapis/google-cloud-python/issues/17351)) ([a53487a](https://github.com/googleapis/google-cloud-python/commit/a53487a009c21912ea6c99fe3a5e0e52a26b31ef))
+
 ## [2.41.0](https://github.com/googleapis/google-cloud-python/compare/google-cloud-bigtable-v2.40.0...google-cloud-bigtable-v2.41.0) (2026-07-16)
 
 

@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-documentai-toolbox/#history
 
+## [0.17.3](https://github.com/googleapis/google-cloud-python/compare/google-cloud-documentai-toolbox-v0.17.2...google-cloud-documentai-toolbox-v0.17.3) (2026-08-14)
+
+
+### Bug Fixes
+
+* **documentai-toolbox:** contain split_pdf output to output_path ([#18063](https://github.com/googleapis/google-cloud-python/issues/18063)) ([d206212](https://github.com/googleapis/google-cloud-python/commit/d206212acfe61f109c2dcb4efee96af6a88913a9))
+
 ## [0.17.2](https://github.com/googleapis/google-cloud-python/compare/google-cloud-documentai-toolbox-v0.17.1...google-cloud-documentai-toolbox-v0.17.2) (2026-08-06)
 
 
