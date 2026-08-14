@@ -4,6 +4,18 @@
 
 [1]: https://pypi.org/project/google-cloud-ndb/#history
 
+## [2.6.0](https://github.com/googleapis/google-cloud-python/compare/google-cloud-ndb-v2.5.1...google-cloud-ndb-v2.6.0) (2026-08-14)
+
+
+### Features
+
+* check python and dependency versions in bigquery and ndb ([#18075](https://github.com/googleapis/google-cloud-python/issues/18075)) ([62ff6f3](https://github.com/googleapis/google-cloud-python/commit/62ff6f37f04de1b8a88876bfc1ac379573e42b36))
+
+
+### Bug Fixes
+
+* **ndb:** avoid unbound lock in delete callback ([#17969](https://github.com/googleapis/google-cloud-python/issues/17969)) ([c513b39](https://github.com/googleapis/google-cloud-python/commit/c513b397eb3514eaec81e26e6cf044a92b57cf23))
+
 ## [2.5.1](https://github.com/googleapis/google-cloud-python/compare/google-cloud-ndb-v2.5.0...google-cloud-ndb-v2.5.1) (2026-08-06)
 
 
