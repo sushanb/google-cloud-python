@@ -340,9 +340,10 @@ class BigtableDataClient(ClientWithProject):
                 self._accelerator_env["GOOGLE_APPLICATION_CREDENTIALS"] = (
                     credentials_file
                 )
+        safe_version = "-".join(google.cloud.bigtable.__version__.split()) or "unknown"
         self._accelerator_flags += [
             "--caller-user-agent",
-            f"python-v{google.cloud.bigtable.__version__}",
+            f"python-v{safe_version}",
         ]
 
     def _resolve_principal(self) -> str | None:

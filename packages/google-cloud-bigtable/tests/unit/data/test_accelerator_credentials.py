@@ -121,12 +121,14 @@ class TestInitAcceleratorConfig:
         expected = f"python-v{google.cloud.bigtable.__version__}"
         assert flags[flags.index("--caller-user-agent") + 1] == expected
 
-    def test_caller_user_agent_forwarded_even_when_blocked(self):
+    def test_caller_user_agent_not_forwarded_when_blocked(self):
+        # When an in-memory secret blocks acceleration, _init_accelerator_config
+        # short-circuits before any daemon flags are populated -- the daemon is
+        # never spawned, so there is no User-Agent to prefix.
         c = _bare_client()
         c._init_accelerator_config(explicit_credentials=True, client_options=None)
-        flags = c._accelerator_flags
-        expected = f"python-v{google.cloud.bigtable.__version__}"
-        assert flags[flags.index("--caller-user-agent") + 1] == expected
+        assert c._accelerator_blocked_reason is not None
+        assert "--caller-user-agent" not in c._accelerator_flags
 
 
 class TestResolvePrincipal:
